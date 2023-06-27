@@ -86,6 +86,8 @@ const spin = () => {
   return reels;
 };
 
+const transpose = (reels) => {};
+
 const reels = spin();
 console.log(reels);
 let balance = deposit();
