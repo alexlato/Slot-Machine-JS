@@ -86,10 +86,33 @@ const spin = () => {
   return reels;
 };
 
-const transpose = (reels) => {};
+const transpose = (reels) => {
+  const rows = [];
+  for (let i = 0; i < ROWS; i++) {
+    rows.push([]);
+    for (let j = 0; j < COLS; j++) {
+      rows[i].push(reels[j][i]);
+    }
+  }
+  return rows;
+};
 
-const reels = spin();
-console.log(reels);
+const printRows = (rows) => {
+  for (const row of rows) {
+    let rowString = "";
+    for (const [i, symbol] of row.entries()) {
+      rowString += symbol;
+      if (i != row.length - 1) {
+        rowString += " | ";
+      }
+    }
+    console.log(rowString);
+  }
+};
+
 let balance = deposit();
 const numberOflines = getNumberOfLines();
 const bet = getBet(balance, numberOflines);
+const reels = spin();
+const rows = transpose(reels);
+printRows(rows);
