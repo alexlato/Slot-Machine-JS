@@ -134,13 +134,16 @@ const getWinnings = (rows, bet, lines) => {
 
 const game = () => {
   let balance = deposit();
-  const numberOflines = getNumberOfLines();
-  const bet = getBet(balance, numberOflines);
-  const reels = spin();
-  const rows = transpose(reels);
-  printRows(rows);
-  const winnings = getWinnings(rows, bet, numberOflines);
-  console.log("You won $" + winnings.toString());
+
+  while (true) {
+    const numberOflines = getNumberOfLines();
+    const bet = getBet(balance, numberOflines);
+    const reels = spin();
+    const rows = transpose(reels);
+    printRows(rows);
+    const winnings = getWinnings(rows, bet, numberOflines);
+    console.log("You won $" + winnings.toString());
+  }
 };
 
 game();
