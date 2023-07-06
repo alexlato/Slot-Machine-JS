@@ -136,12 +136,15 @@ const game = () => {
   let balance = deposit();
 
   while (true) {
+    console.log("You have a balance of $" + balance);
     const numberOflines = getNumberOfLines();
     const bet = getBet(balance, numberOflines);
+    balance -= bet * numberOflines;
     const reels = spin();
     const rows = transpose(reels);
     printRows(rows);
     const winnings = getWinnings(rows, bet, numberOflines);
+    balance += winnings;
     console.log("You won $" + winnings.toString());
   }
 };
